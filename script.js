@@ -1,4 +1,4 @@
-document.getElementById("btn").addEventListener("click", function() { 
-  document.getElementById("message").textContent = "You clicked the button!"; //JAINAM
+document.getElementById("btn").addEventListener("click", function() { //swati
+  document.getElementById("message").textContent = "You clicked the button!";  //JAINAM
 });
 // github 
