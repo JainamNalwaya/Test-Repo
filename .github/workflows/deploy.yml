@@ -1,0 +1,31 @@
+name: Deploy from Main to Source
+
+on:
+  push:
+    branches:
+      - main # Trigger when main branch changes
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Main Branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0 # get full history
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge Main into Source
+        run: |
+          git checkout source
+          git merge main --no-edit
+
+      - name: Push Changes to Source
+        run: |
+          git push origin source
